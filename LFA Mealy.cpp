@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #include <string>
@@ -10,7 +9,7 @@ using namespace std;
 //ofstream fout("mealy.out");
 
 int noduri, muchii, nrSF, nrCuvinte;
-string cuvantIn, cuvantOut;
+string cuvantIn, cuvantOut, parcurgere="[0";
 
 
 class Tranzitie
@@ -144,6 +143,8 @@ bool DFA(string cuvant, int nodCurent)
             if ((listaTranzitii[i].getStartNode() == nodCurent) & (listaTranzitii[i].getInputTransition() == cuvant[0]))
             {
                 cuvantOut += listaTranzitii[i].getOutputTransition();
+                parcurgere += ", ";
+                parcurgere += '0' + nodCurent;
                 return DFA(cuvant.substr(1, cuvant.size()), listaTranzitii[i].getEndNode());
             }
         return false;
@@ -382,6 +383,8 @@ void meniu()
 
             if (DFA(cuvantIn, 0))
             {
+                parcurgere += ']';
+
                 color(7);
                 cout << "Cuvantul ";
 
@@ -398,7 +401,12 @@ void meniu()
                 if (cuvantIn == "")
                     cout << "vid" << "\n\n";
                 else
-                    cout << cuvantOut << "\n\n";
+                    cout << cuvantOut;
+
+                color(7);
+                cout << ", urmand drumul: ";
+                color(14);
+                cout << parcurgere << "\n\n";
             }
 
             else
