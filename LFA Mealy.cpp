@@ -9,7 +9,7 @@ using namespace std;
 //ofstream fout("mealy.out");
 
 int noduri, muchii, nrSF, nrCuvinte;
-string cuvantIn, cuvantOut, parcurgere="[0";
+string cuvantIn, cuvantOut, parcurgere = "[0";
 
 
 class Tranzitie
@@ -160,6 +160,8 @@ void meniu()
     while (inMenu)
     {
 #pragma region Meniu Principal
+        parcurgere = "[0";
+
         color(14);
         cout << "-=+=O=+=- MENIU -=+=O=+=-\n\n\n";
         cout << "Alegeti o optiune dintre urmatoarele:\n\n";
